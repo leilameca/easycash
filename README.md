@@ -74,6 +74,38 @@ Si una entrega se vincula a una transacción:
 - pasa a `partial` si todavía falta efectivo por entregar
 - pasa a `completed` cuando el total entregado alcanza el `baseAmount`
 
+## Publicar gratis en Firebase Hosting
+
+Esta app puede publicarse gratis en `Firebase Hosting` como exportación estática porque la lógica vive en el cliente y usa Firebase directamente desde el navegador.
+
+1. Instala Firebase CLI:
+
+```bash
+npm install -g firebase-tools
+```
+
+2. Inicia sesión:
+
+```bash
+firebase login
+```
+
+3. Verifica o cambia el proyecto en `.firebaserc` si tu `projectId` no es `easycash`.
+
+4. Genera la versión estática:
+
+```bash
+npm run build
+```
+
+5. Publica:
+
+```bash
+firebase deploy --only hosting
+```
+
+6. Agrega el dominio publicado en `Authentication > Settings > Authorized domains` para que el login funcione fuera de localhost.
+
 ## Nota
 
 En este entorno no había `node`/`npm` disponible en PATH, así que el código quedó preparado pero no pude ejecutar `build` o `lint` localmente.
